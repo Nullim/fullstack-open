@@ -24,8 +24,11 @@ sequenceDiagram
   Note right of server: The note object returns with a 'content' and 'date' property
 
   server-->>browser: Redirect to '/notes'.
+  deactivate browser
   deactivate server
+  browser-->>user: Reloads the page.
 
+  activate browser
   browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
   activate server
   server-->>browser: HTML document
@@ -50,6 +53,6 @@ sequenceDiagram
 
   Note right of browser: ...including the now updated notes.
 
-  browser->>user: Present updated notes to user.
+  browser-->>user: Present updated notes to user.
   deactivate browser
 ```

@@ -21,7 +21,7 @@ sequenceDiagram
 
   Note right of browser: Pushes to list array, rerenders and sends to server
   
-  browser->>user: Present rerendered notes to user
+  browser-->>user: Present rerendered notes to user
   deactivate browser
 
   browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
