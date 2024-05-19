@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-  box Yellow Frontend
+  box Green Frontend
   actor user
   participant browser
   end
@@ -15,13 +15,23 @@ sequenceDiagram
   browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
   activate server
 
-  Note right of browser: Server creates note and adds to array.
+  Note right of browser: The form sends the request to address '/new_note'
+
+  Note right of server: Server creates note and adds to array.
+
+  Note right of server: The note object returns with a 'content' and 'date' property
 
   server-->>browser: Status code 302 Found.
   deactivate server
 
   Note right of browser: Server makes GET request to redirect browser to '/notes'
 
+  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+  activate server
+  server-->>browser: HTML document
+  deactivate server
+
+  Note right of browser: Redirect causes three more HTTP GET requests...
 
   browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
   activate server
@@ -33,7 +43,7 @@ sequenceDiagram
   server-->>browser: the JavaScript file
   deactivate server
 
-  Note right of browser: Redirect causes three more HTTP GET requests, including the now updated notes:
+  Note right of browser: ...including the now updated notes.
 
   browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
   activate server
