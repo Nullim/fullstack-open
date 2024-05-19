@@ -11,14 +11,17 @@ sequenceDiagram
   Note right of user: Note contents: "this is a note!"
 
   user->>browser: The user clicks on 'Save' button
+  activate browser
   browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
   activate server
+
+  Note right of browser: Server creates note and adds to array.
+
   server-->>browser: Status code 302 Found.
   deactivate server
 
-  Note right of browser: Server makes GET request to redirect browser to Header Location '/notes'
+  Note right of browser: Server makes GET request to redirect browser to '/notes'
 
-  Note right of server: Server accesses note through body of request. Creates note and adds to array.
 
   browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
   activate server
@@ -35,7 +38,8 @@ sequenceDiagram
   server-->>browser: [..., { "content": "this is a note!", "date": "2024-01-01"} ]
   deactivate server
   
-  Note right of browser: Reloading the page causes three more HTTP GET requests, including the now updated notes.
+  Note right of browser: Redirect causes three more HTTP GET requests, including the now updated notes.
 
+  deactivate browser
   browser->>user: Present updated notes to user.
 ```
