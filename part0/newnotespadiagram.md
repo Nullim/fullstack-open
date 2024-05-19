@@ -20,8 +20,9 @@ sequenceDiagram
   Note right of browser: Creates note with its content and timestamp
 
   Note right of browser: Pushes to list array, rerenders and sends to server
-  deactivate browser
+  
   browser->>user: Present rerendered notes to user
+  deactivate browser
 
   browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
   activate server
@@ -30,9 +31,8 @@ sequenceDiagram
 
   Note right of browser: Content-Type is also defined as 'application/json'
 
-  server-->>browser: Status code 201 Created
+  server-->>browser: Status code 201 Created 
+  deactivate server
 
   Note right of browser: Notice how the server does not redirect
-
-  deactivate server
 ```

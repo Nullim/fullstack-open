@@ -5,7 +5,7 @@ sequenceDiagram
   participant browser
   end
   box Red Backend
-  participanet server
+  participant server
   end
 
   user->>browser: The user writes a note
@@ -50,6 +50,6 @@ sequenceDiagram
 
   Note right of browser: ...including the now updated notes.
 
-  deactivate browser
   browser->>user: Present updated notes to user.
+  deactivate browser
 ```
