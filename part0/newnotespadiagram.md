@@ -5,7 +5,7 @@ sequenceDiagram
   participant browser
   end
   box Red Backend
-  participanet server
+  participant server
   end
 
   user->>browser: The user writes a note
