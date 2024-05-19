@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-  box Frontend
+  box Yellow Frontend
   actor user
   participant browser
   end
@@ -33,12 +33,12 @@ sequenceDiagram
   server-->>browser: the JavaScript file
   deactivate server
 
+  Note right of browser: Redirect causes three more HTTP GET requests, including the now updated notes:
+
   browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
   activate server
   server-->>browser: [..., { "content": "this is a note!", "date": "2024-01-01"} ]
   deactivate server
-  
-  Note right of browser: Redirect causes three more HTTP GET requests, including the now updated notes.
 
   deactivate browser
   browser->>user: Present updated notes to user.
