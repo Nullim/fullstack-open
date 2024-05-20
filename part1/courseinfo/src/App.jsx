@@ -8,22 +8,21 @@ const Content = (props) => {
   return (
     <div>
       <p>
-        {props.parts[0]} {props.exercises[0]}
+        {props.part1} {props.exercises1}
       </p>
       <p>
-        {props.parts[1]} {props.exercises[1]}
+        {props.part2} {props.exercises2}
       </p>
       <p>
-        {props.parts[2]} {props.exercises[2]}
+        {props.part3} {props.exercises3}
       </p>
     </div>
   )
 }
 
 const Total = (props) => {
-  const totalSum = props.exercises.reduce((accum, currentValue) => accum + currentValue, 0)
   return (
-    <p>Number of exercises {totalSum}</p>
+    <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
   )
 }
 
@@ -36,14 +35,22 @@ const App = () => {
   const part3 = 'State of a component'
   const exercises3 = 14
 
-  const parts = [ part1, part2, part3 ]
-  const exercises= [ exercises1, exercises2, exercises3 ]
-
   return (
     <div>
       <Header course={course} />
-      <Content parts={parts} exercises={exercises} />
-      <Total exercises={exercises} />
+      <Content 
+        part1={part1} 
+        exercises1={exercises1} 
+        part2={part2}
+        exercises2={exercises2}
+        part3={part3}
+        exercises3={exercises3}
+      />
+      <Total 
+        exercises1={exercises1} 
+        exercises2={exercises2}
+        exercises3={exercises3}
+      />
     </div>
   )
 }
