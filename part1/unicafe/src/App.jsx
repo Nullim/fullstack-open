@@ -27,6 +27,21 @@ const Feedback = (props) => {
 }
 
 const Statistics = (props) => {
+  if (props.good === 0 && 
+    props.bad === 0 && 
+    props.neutral === 0 &&
+    props.all === 0 &&
+    props.positive === 0 &&
+    props.average === 0
+  ) {
+    return (
+      <div>
+        <h1>statistics</h1>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+
   return (
     <div>
       <h1>statistics</h1>
@@ -67,7 +82,7 @@ const App = () => {
       default:
         console.log("This log should never appear! Expression:", which);
     }
-    
+
     setAll(all + 1)
     const difference = updatedGood - updatedBad
     setAverage(difference / (all + 1))
